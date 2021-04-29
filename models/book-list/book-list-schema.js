@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
 const booklistsSchema = mongoose.Schema({
-  books: {type: String, ref: "BookModel"}
+  books: {type: ObjectId, ref: "BookModel"}
 }, {collection: 'booklists'})
+module.exports = booklistsSchema

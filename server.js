@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb+srv://aliu19:mongo-password@cluster0.p3si5.mongodb.net/whiteboard?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect('mongodb+srv://aliu19:mongo-password@cluster0.p3si5.mongodb.net/vibeify?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 /// configures CORS

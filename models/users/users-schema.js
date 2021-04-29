@@ -10,3 +10,4 @@ const usersSchema = mongoose.Schema({
   role: {type: String, enumerable: ["GENERAL_USER", "ADMIN"]},
   bookLists: {type: String, ref: "BookListModel"}
 }, {collection: 'users'})
+module.exports = usersSchema
