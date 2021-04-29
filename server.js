@@ -15,7 +15,5 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-require('./spotify-auth')(app)
-
 // require('dotenv').config();
 app.listen(process.env.PORT || 4000)
