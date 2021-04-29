@@ -4,7 +4,7 @@ module.exports = (app) => {
   const findAllBookLists = (req, res) => {
     booklistService.findAllBookLists()
     .then((bookLists) => {
-      res.json(bookLists)
+      res.send(bookLists)
     })
   }
 
@@ -12,7 +12,7 @@ module.exports = (app) => {
     const userId = req.params["uid"]
     booklistService.findBookListsForUser(userId)
     .then((booklists) => {
-      res.json(booklists)
+      res.send(booklists)
     })
   }
 
@@ -20,7 +20,7 @@ module.exports = (app) => {
     const blid = req.params["blid"]
     booklistService.findBookListById(blid)
     .then((bookList) => {
-      res.json(bookList)
+      res.send(bookList)
     })
   }
 
@@ -28,8 +28,16 @@ module.exports = (app) => {
     const userId = req.params["uid"]
     const name = req.body
     booklistService.createBookList(userId, name)
-    .then((booklist) => {
-      res.send(booklist)
+    .then((newBooklist) => {
+      res.send(newBooklist)
+    })
+  }
+
+  const deleteBookList = (req, res) => {
+    const booklistId = req.params["bklist"]
+    booklistService.deleteBookList(booklistId)
+    .then((status) => {
+      res.send(status)
     })
   }
 
@@ -37,4 +45,5 @@ module.exports = (app) => {
   app.get("/api/users/:uid/booklists", findBookListsForUser)
   app.get("/api/users/:uid/booklists/:blid", findBookListById)
   app.post("/api/users/:uid/booklists", createBookList)
+  app.delete("/api/users/:uid/booklists/:bklist", deleteBookList)
 }
