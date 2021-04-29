@@ -15,11 +15,15 @@ const createBookList = (userId, name) =>
 const deleteBookList = (blid) =>
     booklistDao.deleteBookList(blid)
 
+const updateBookList = (blid, name) =>
+    booklistDao.updateBookList(blid, name)
+
 
 module.exports = {
   findAllBookLists,
   findBookListsForUser,
   findBookListById,
   createBookList,
-  deleteBookList
+  deleteBookList,
+  updateBookList
 }

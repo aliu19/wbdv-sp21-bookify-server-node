@@ -19,10 +19,14 @@ const createBookList = (userId, name) =>
 const deleteBookList = (blid) =>
     booklistModel.findByIdAndRemove(blid)
 
+const updateBookList = (blid, name) =>
+    booklistModel.findByIdAndUpdate(blid, {name: name})
+
 module.exports = {
   findAllBookLists,
   findBookListsForUser,
   findBookListById,
   createBookList,
-  deleteBookList
+  deleteBookList,
+  updateBookList
 }

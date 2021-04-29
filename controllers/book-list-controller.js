@@ -41,9 +41,19 @@ module.exports = (app) => {
     })
   }
 
+  const updateBookList = (req, res) => {
+    const booklistId = req.params["bklist"]
+    const name = req.body
+    booklistService.updateBookList(booklistId, name)
+    .then((updatedBookList) => {
+      res.send(updatedBookList)
+    })
+  }
+
   app.get("/api/booklists", findAllBookLists)
   app.get("/api/users/:uid/booklists", findBookListsForUser)
   app.get("/api/users/:uid/booklists/:blid", findBookListById)
   app.post("/api/users/:uid/booklists", createBookList)
   app.delete("/api/users/:uid/booklists/:bklist", deleteBookList)
+  app.put("/api/users/:uid/booklists/:bklist", updateBookList)
 }
