@@ -7,7 +7,6 @@ const usersSchema = mongoose.Schema({
   lastName: String,
   email: String,
   phone: String,
-  role: {type: String, enumerable: ["GENERAL_USER", "ADMIN"]},
-  bookLists: {type: String, ref: "BookListModel"}
+  role: {type: String, enumerable: ["GENERAL_USER", "ADMIN"]}
 }, {collection: 'users'})
 module.exports = usersSchema

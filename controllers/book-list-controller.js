@@ -16,6 +16,15 @@ module.exports = (app) => {
     })
   }
 
-  app.get("/api/booklists", findAllBookLists)
+  const createBookList = (req, res) => {
+    const userId = req.params["uid"]
+    booklistService.createBookList(userId, req.body)
+    .then((booklist) => {
+      res.send(booklist)
+    })
+  }
+
+  app.get("/api/users/:uid/booklists", findAllBookLists)
   app.get("/api/booklists/:blid", findBookListById)
+  app.post("/api/users/:uid/booklists", createBookList)
 }
