@@ -1,17 +1,21 @@
 const booklistDao = require("../daos/book-list-dao")
 
-const findAllBooks = () =>
-    booklistDao.findAllBooks()
+const findAllBookLists = () =>
+    booklistDao.findAllBookLists()
+
+const findBookListsForUser = (uid) =>
+    booklistDao.findBookListsForUser(uid)
 
 const findBookListById = (blid) =>
     booklistDao.findBookListById(blid)
 
-const createBookList = (userId, title) =>
-    booklistDao.createBookList(userId, title)
+const createBookList = (userId, name) =>
+    booklistDao.createBookList(userId, name)
 
 
 module.exports = {
-  findAllBooks,
+  findAllBookLists,
+  findBookListsForUser,
   findBookListById,
   createBookList
 }

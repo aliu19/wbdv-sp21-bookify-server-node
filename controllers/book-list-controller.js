@@ -8,6 +8,14 @@ module.exports = (app) => {
     })
   }
 
+  const findBookListsForUser = (req, res) => {
+    const userId = req.params["uid"]
+    booklistService.findBookListsForUser(userId)
+    .then((booklists) => {
+      res.json(booklists)
+    })
+  }
+
   const findBookListById = (req, res) => {
     const blid = req.params["blid"]
     booklistService.findBookListById(blid)
@@ -18,13 +26,15 @@ module.exports = (app) => {
 
   const createBookList = (req, res) => {
     const userId = req.params["uid"]
-    booklistService.createBookList(userId, req.body)
+    const name = req.body
+    booklistService.createBookList(userId, name)
     .then((booklist) => {
       res.send(booklist)
     })
   }
 
-  app.get("/api/users/:uid/booklists", findAllBookLists)
-  app.get("/api/booklists/:blid", findBookListById)
+  app.get("/api/booklists", findAllBookLists)
+  app.get("/api/users/:uid/booklists", findBookListsForUser)
+  app.get("/api/users/:uid/booklists/:blid", findBookListById)
   app.post("/api/users/:uid/booklists", createBookList)
 }
