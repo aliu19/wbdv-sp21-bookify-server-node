@@ -45,13 +45,10 @@ module.exports = (app) => {
 
   const login = (req, res) => {
     userService.findUserByCredentials(req.body)
-    .then((theActualUser) => {
-      if (theActualUser) {
-        userService.createUser(req.body)
-        .then((actualUser) => {
-          req.session['profile'] = actualUser
-          res.send(actualUser)
-        })
+    .then((actualUser) => {
+      if (actualUser) {
+        req.session['profile'] = actualUser
+        res.send(actualUser)
       } else {
         res.send("0")
       }
@@ -60,13 +57,14 @@ module.exports = (app) => {
 
   const logout = (req, res) => {
     req.session.destroy()
+    res.send(200)
   }
 
   app.get("/api/users", findAllUsers)
   app.get("/api/users/:uid", findUserById)
   app.put("/api/users/:uid", updateUser)
-  app.post("/api/users/register", register)
-  app.post("/api/users/profile", profile) // who is currently logged in
-  app.post("/api/users/login", login)
-  app.post("/api/users/logout", logout)
+  app.post("/api/register", register)
+  app.post("/api/profile", profile) // who is currently logged in
+  app.post("/api/login", login)
+  app.post("/api/logout", logout)
 }
