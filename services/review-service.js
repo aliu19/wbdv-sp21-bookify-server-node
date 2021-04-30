@@ -9,6 +9,9 @@ const findReviewsForBook = (bid) =>
 const findReviewsForUser = (uid) =>
     reviewDao.findReviewsForUser(uid)
 
+const findReviewsForHome = () =>
+    reviewDao.findReviewsForHome()
+
 const createReview = (review) =>
     reviewDao.createReview(review)
 
@@ -22,6 +25,7 @@ module.exports = {
   findAllReviews,
   findReviewsForBook,
   findReviewsForUser,
+  findReviewsForHome,
   createReview,
   deleteReview,
   updateReview

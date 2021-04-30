@@ -24,6 +24,13 @@ module.exports = (app) => {
     })
   }
 
+  const findReviewsForHome = (req, res) => {
+    reviewService.findReviewsForHome()
+    .then((reviews) => {
+      res.send(reviews)
+    })
+  }
+
   const createReview = (req, res) => {
     reviewService.createReview(req.body)
     .then((newReview) => {
@@ -50,6 +57,7 @@ module.exports = (app) => {
   app.get("/api/reviews", findAllReviews)
   app.get("/api/books/:bid/reviews", findReviewsForBook)
   app.get("/api/users/:uid/reviews", findReviewsForUser)
+  app.get("/api/home/reviews", findReviewsForHome)
   app.post("/api/reviews", createReview)
   app.delete("/api/reviews/:rid", deleteReview)
   app.put("/api/reviews/:rid", updateReview)

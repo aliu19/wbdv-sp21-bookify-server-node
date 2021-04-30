@@ -9,6 +9,9 @@ const findReviewsForBook = (bid) =>
 const findReviewsForUser = (uid) =>
     reviewModel.find({userId: uid})
 
+const findReviewsForHome = () =>
+    reviewModel.find().sort({_id: -1}).limit(10)
+
 const createReview = (review) =>
     reviewModel.create(review)
 
@@ -22,6 +25,7 @@ module.exports = {
   findAllReviews,
   findReviewsForBook,
   findReviewsForUser,
+  findReviewsForHome,
   createReview,
   deleteReview,
   updateReview
