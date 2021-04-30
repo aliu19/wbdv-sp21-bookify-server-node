@@ -16,7 +16,7 @@ module.exports = (app) => {
     })
   }
 
-  const createUser = (req, res) => {
+  const register = (req, res) => {
     userService.findUserByUsername(req.body.username)
     .then((theActualUser) => {
       if (theActualUser.length > 0) {
@@ -43,9 +43,30 @@ module.exports = (app) => {
     res.send(currentUser)
   }
 
+  const login = (req, res) => {
+    userService.findUserByCredentials(req.body)
+    .then((theActualUser) => {
+      if (theActualUser) {
+        userService.createUser(req.body)
+        .then((actualUser) => {
+          req.session['profile'] = actualUser
+          res.send(actualUser)
+        })
+      } else {
+        res.send("0")
+      }
+    })
+  }
+
+  const logout = (req, res) => {
+    req.session.destroy()
+  }
+
   app.get("/api/users", findAllUsers)
   app.get("/api/users/:uid", findUserById)
-  app.post("/api/users", createUser)
   app.put("/api/users/:uid", updateUser)
+  app.post("/api/users/register", register)
   app.post("/api/users/profile", profile) // who is currently logged in
+  app.post("/api/users/login", login)
+  app.post("/api/users/logout", logout)
 }

@@ -15,10 +15,14 @@ const createUser = (user) =>
 const updateUser = (user) =>
     userDao.updateUser(user)
 
+const findUserByCredentials = (credentials) =>
+    userDao.findUserByCredentials(credentials)
+
 module.exports = {
   findAllUsers,
   findUserById,
   findUserByUsername,
   createUser,
-  updateUser
+  updateUser,
+  findUserByCredentials
 }

@@ -15,10 +15,17 @@ const createUser = (user) =>
 const updateUser = (user) =>
     userModel.findByIdAndUpdate(user._id, user)
 
+const findUserByCredentials = (credentials) =>
+    userModel.findOne({
+      username: credentials.username,
+      password: credentials.password
+    })
+
 module.exports = {
   findAllUsers,
   findUserById,
   findUserByUsername,
   createUser,
-  updateUser
+  updateUser,
+  findUserByCredentials
 }
