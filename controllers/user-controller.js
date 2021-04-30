@@ -17,9 +17,16 @@ module.exports = (app) => {
   }
 
   const createUser = (req, res) => {
-    userService.createUser(req.body)
-    .then((newUser) => {
-      res.send(newUser)
+    userService.findUserByUsername(req.body.username)
+    .then((theActualUser) => {
+      if (theActualUser) {
+        res.send("0")
+      } else {
+        userService.createUser(req.body)
+        .then((newUser) => {
+          res.send(newUser)
+        })
+      }
     })
   }
 
