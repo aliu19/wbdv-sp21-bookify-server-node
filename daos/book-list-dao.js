@@ -9,12 +9,8 @@ const findBookListsForUser = (uid) =>
 const findBookListById = (blid) =>
     booklistModel.findById(blid)
 
-const createBookList = (userId, name) =>
-    booklistModel.create({
-      name: name,
-      user: userId,
-      books: []
-    })
+const createBookList = (bookList) =>
+    booklistModel.create(bookList)
 
 const deleteBookList = (blid) =>
     booklistModel.findByIdAndRemove(blid)

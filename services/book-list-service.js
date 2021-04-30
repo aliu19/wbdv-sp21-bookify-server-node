@@ -9,8 +9,8 @@ const findBookListsForUser = (uid) =>
 const findBookListById = (blid) =>
     booklistDao.findBookListById(blid)
 
-const createBookList = (userId, name) =>
-    booklistDao.createBookList(userId, name)
+const createBookList = (bookList) =>
+    booklistDao.createBookList(bookList)
 
 const deleteBookList = (blid) =>
     booklistDao.deleteBookList(blid)

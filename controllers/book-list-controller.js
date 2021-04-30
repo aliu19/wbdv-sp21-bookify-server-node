@@ -25,9 +25,7 @@ module.exports = (app) => {
   }
 
   const createBookList = (req, res) => {
-    const userId = req.params["uid"]
-    const name = req.body
-    booklistService.createBookList(userId, name)
+    booklistService.createBookList(req.body)
     .then((newBookList) => {
       res.send(newBookList)
     })
@@ -52,8 +50,8 @@ module.exports = (app) => {
 
   app.get("/api/booklists", findAllBookLists)
   app.get("/api/users/:uid/booklists", findBookListsForUser)
-  app.get("/api/users/:uid/booklists/:blid", findBookListById) // TODO link /api/booklists/:blid ?
-  app.post("/api/users/:uid/booklists", createBookList) // TODO link /api/booklists ?
-  app.delete("/api/users/:uid/booklists/:blid", deleteBookList) // TODO link /api/booklists/:blid ?
-  app.put("/api/users/:uid/booklists/:blid", updateBookList) // TODO link /api/booklists/:blid ?
+  app.get("/api/booklists/:blid", findBookListById)
+  app.post("/api/booklists", createBookList)
+  app.delete("/api/booklists/:blid", deleteBookList)
+  app.put("/api/booklists/:blid", updateBookList)
 }
