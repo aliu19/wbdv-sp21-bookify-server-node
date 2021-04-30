@@ -21,6 +21,7 @@ app.use(bodyParser.json())
 
 require("./controllers/book-list-controller")(app)
 require("./controllers/user-controller")(app)
+require("./controllers/review-controller")(app)
 
 require('dotenv').config();
 app.listen(process.env.PORT || 4000)

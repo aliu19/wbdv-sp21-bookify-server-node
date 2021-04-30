@@ -52,8 +52,8 @@ module.exports = (app) => {
 
   app.get("/api/booklists", findAllBookLists)
   app.get("/api/users/:uid/booklists", findBookListsForUser)
-  app.get("/api/users/:uid/booklists/:blid", findBookListById)
-  app.post("/api/users/:uid/booklists", createBookList)
-  app.delete("/api/users/:uid/booklists/:blid", deleteBookList)
-  app.put("/api/users/:uid/booklists/:blid", updateBookList)
+  app.get("/api/users/:uid/booklists/:blid", findBookListById) // TODO link /api/booklists/:blid ?
+  app.post("/api/users/:uid/booklists", createBookList) // TODO link /api/booklists ?
+  app.delete("/api/users/:uid/booklists/:blid", deleteBookList) // TODO link /api/booklists/:blid ?
+  app.put("/api/users/:uid/booklists/:blid", updateBookList) // TODO link /api/booklists/:blid ?
 }

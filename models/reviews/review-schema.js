@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
-const reviewsSchema = mongoose.Schema({
+const reviewSchema = mongoose.Schema({
   userId: ObjectId,
   bookId: String,
   review: String
 }, {collection: 'reviews'})
-module.exports = reviewsSchema
+module.exports = reviewSchema
