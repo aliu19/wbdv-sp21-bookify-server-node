@@ -4,7 +4,7 @@ const findAllBookLists = () =>
     booklistModel.find()
 
 const findBookListsForUser = (uid) =>
-    booklistModel.find({user: uid}) //TODO uid or deconstruct bc it has all user fields?
+    booklistModel.find({userId: uid})
 
 const findBookListById = (blid) =>
     booklistModel.findById(blid)

@@ -1,5 +1,8 @@
 const reviewDao = require("../daos/review-dao")
 
+const findAllReviews = () =>
+    reviewDao.findAllReviews()
+
 const findReviewsForBook = (bid) =>
     reviewDao.findReviewsForBook(bid)
 
@@ -16,6 +19,7 @@ const updateReview = (rid, review) =>
     reviewDao.updateReview(rid, review)
 
 module.exports = {
+  findAllReviews,
   findReviewsForBook,
   findReviewsForUser,
   createReview,

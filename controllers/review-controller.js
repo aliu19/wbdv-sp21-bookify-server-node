@@ -1,9 +1,16 @@
 const reviewService = require("../services/review-service")
 
 module.exports = (app) => {
+  const findAllReviews = (req, res) => {
+    reviewService.findAllReviews()
+    .then((reviews) => {
+      res.send(reviews)
+    })
+  }
+
   const findReviewsForBook = (req, res) => {
     const bookId = req.params["bid"]
-    reviewService.findReviewsForBooks(bookId)
+    reviewService.findReviewsForBook(bookId)
     .then((reviews) => {
       res.send(reviews)
     })
@@ -40,6 +47,7 @@ module.exports = (app) => {
     })
   }
 
+  app.get("/api/reviews", findAllReviews)
   app.get("/api/books/:bid/reviews", findReviewsForBook)
   app.get("/api/users/:uid/reviews", findReviewsForUser)
   app.post("/api/reviews", createReview)

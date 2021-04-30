@@ -1,5 +1,8 @@
 const reviewModel = require("../models/reviews/review-model")
 
+const findAllReviews = () =>
+    reviewModel.find()
+
 const findReviewsForBook = (bid) =>
     reviewModel.find({bookId: bid})
 
@@ -16,6 +19,7 @@ const updateReview = (rid, review) =>
     reviewModel.findByIdAndUpdate(rid, review)
 
 module.exports = {
+  findAllReviews,
   findReviewsForBook,
   findReviewsForUser,
   createReview,

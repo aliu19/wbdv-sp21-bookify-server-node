@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
-const booklistsSchema = mongoose.Schema({
+const booklistSchema = mongoose.Schema({
   name: String,
-  user: {type: ObjectId, ref: "UserModel"},
+  userId: {type: String, ref: "UserModel"},
   books: [String]
 }, {collection: 'booklists'})
-module.exports = booklistsSchema
+module.exports = booklistSchema

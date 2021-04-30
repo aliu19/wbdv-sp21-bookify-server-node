@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const reviewSchema = mongoose.Schema({
-  userId: ObjectId,
+  userId: String,
   bookId: String,
   review: String
 }, {collection: 'reviews'})
