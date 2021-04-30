@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const usersSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   username: String,
   password: String,
   firstName: String,
@@ -9,4 +9,4 @@ const usersSchema = mongoose.Schema({
   phone: String,
   role: {type: String, enumerable: ["GENERAL_USER", "ADMIN"]}
 }, {collection: 'users'})
-module.exports = usersSchema
+module.exports = userSchema

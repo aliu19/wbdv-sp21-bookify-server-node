@@ -11,14 +11,14 @@ module.exports = (app) => {
   const findBookListsForUser = (req, res) => {
     const userId = req.params["uid"]
     booklistService.findBookListsForUser(userId)
-    .then((booklists) => {
-      res.send(booklists)
+    .then((bookLists) => {
+      res.send(bookLists)
     })
   }
 
   const findBookListById = (req, res) => {
-    const blid = req.params["blid"]
-    booklistService.findBookListById(blid)
+    const bookListId = req.params["blid"]
+    booklistService.findBookListById(bookListId)
     .then((bookList) => {
       res.send(bookList)
     })
@@ -28,23 +28,23 @@ module.exports = (app) => {
     const userId = req.params["uid"]
     const name = req.body
     booklistService.createBookList(userId, name)
-    .then((newBooklist) => {
-      res.send(newBooklist)
+    .then((newBookList) => {
+      res.send(newBookList)
     })
   }
 
   const deleteBookList = (req, res) => {
-    const booklistId = req.params["bklist"]
-    booklistService.deleteBookList(booklistId)
+    const bookListId = req.params["blid"]
+    booklistService.deleteBookList(bookListId)
     .then((status) => {
       res.send(status)
     })
   }
 
   const updateBookList = (req, res) => {
-    const booklistId = req.params["bklist"]
+    const bookListId = req.params["blid"]
     const name = req.body
-    booklistService.updateBookList(booklistId, name)
+    booklistService.updateBookList(bookListId, name)
     .then((updatedBookList) => {
       res.send(updatedBookList)
     })
@@ -54,6 +54,6 @@ module.exports = (app) => {
   app.get("/api/users/:uid/booklists", findBookListsForUser)
   app.get("/api/users/:uid/booklists/:blid", findBookListById)
   app.post("/api/users/:uid/booklists", createBookList)
-  app.delete("/api/users/:uid/booklists/:bklist", deleteBookList)
-  app.put("/api/users/:uid/booklists/:bklist", updateBookList)
+  app.delete("/api/users/:uid/booklists/:blid", deleteBookList)
+  app.put("/api/users/:uid/booklists/:blid", updateBookList)
 }

@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 require("./controllers/book-list-controller")(app)
+require("./controllers/user-controller")(app)
 
 require('dotenv').config();
 app.listen(process.env.PORT || 4000)
