@@ -19,7 +19,7 @@ module.exports = (app) => {
   const createUser = (req, res) => {
     userService.findUserByUsername(req.body.username)
     .then((theActualUser) => {
-      if (theActualUser) {
+      if (theActualUser.length > 0) {
         res.send("0")
       } else {
         userService.createUser(req.body)
