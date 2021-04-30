@@ -24,6 +24,7 @@ module.exports = (app) => {
       } else {
         userService.createUser(req.body)
         .then((newUser) => {
+          req.session['profile'] = newUser
           res.send(newUser)
         })
       }
@@ -37,8 +38,14 @@ module.exports = (app) => {
     })
   }
 
+  const profile = (req, res) => {
+    const currentUser = req.session['profile']
+    res.send(currentUser)
+  }
+
   app.get("/api/users", findAllUsers)
   app.get("/api/users/:uid", findUserById)
   app.post("/api/users", createUser)
   app.put("/api/users/:uid", updateUser)
+  app.post("/api/users/profile", profile) // who is currently logged in
 }
