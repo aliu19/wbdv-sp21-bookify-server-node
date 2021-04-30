@@ -13,7 +13,7 @@ const createUser = (user) =>
     userModel.create(user)
 
 const updateUser = (user) =>
-    userModel.findByIdAndUpdate(user._id, user)
+    userModel.updateOne({_id: user._id}, {$set: user})
 
 const findUserByCredentials = (credentials) =>
     userModel.findOne({
