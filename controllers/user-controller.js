@@ -40,7 +40,7 @@ module.exports = (app) => {
 
   const profile = (req, res) => {
     const currentUser = req.session['profile']
-    res.send(currentUser)
+    res.send(currentUser ? currentUser : "0")
   }
 
   const login = (req, res) => {
