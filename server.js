@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://aliu19:mongo-password@cluster0.p3si5.mongodb.net
 
 /// configures CORS
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://aliu19.github.io/wbdv-sp21-bookify');
+  res.header('Access-Control-Allow-Origin', 'https://aliu19.github.io');
   res.header('Access-Control-Allow-Headers',
       'Content-Type, X-Requested-With, Origin');
   res.header('Access-Control-Allow-Methods',
