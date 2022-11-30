@@ -9,7 +9,7 @@ app.use(session({
 }))
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://aliu19:mongo-password@cluster0.p3si5.mongodb.net/vibeify?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 /// configures CORS
