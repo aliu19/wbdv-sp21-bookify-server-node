@@ -13,12 +13,12 @@ if (process.env.NODE_ENV === 'production') {
 
 var session = require('express-session')
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.EXPRESS_SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
   cookie: {
-    secure: true,
-    sameSite: "none"
+    sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === "production",
   }
 }))
 
