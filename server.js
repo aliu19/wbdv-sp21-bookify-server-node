@@ -1,5 +1,11 @@
 var express = require('express')
 var app = express()
+const cors = require("cors");
+
+app.use(cors({
+  credentials: true,
+  origin: process.env.CORS_ORIGIN
+}));
 
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1) // trust first proxy
