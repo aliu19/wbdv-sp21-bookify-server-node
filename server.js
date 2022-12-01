@@ -1,6 +1,10 @@
 var express = require('express')
 var app = express()
 
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+}
+
 var session = require('express-session')
 app.use(session({
   secret: 'keyboard cat',
