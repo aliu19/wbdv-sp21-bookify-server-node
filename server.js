@@ -4,8 +4,12 @@ var app = express()
 var session = require('express-session')
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    secure: true,
+    sameSite: "none"
+  }
 }))
 
 const mongoose = require('mongoose');
